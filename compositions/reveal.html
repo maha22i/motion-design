@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: radial-gradient(ellipse at 50% 40%, #0f1b2e 0%, #0a0f1a 70%);
+          overflow: hidden;
+          font-family: Inter, system-ui, sans-serif;
+        }
+
+        #rev-logo-area {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          margin-bottom: 40px;
+          z-index: 1;
+        }
+
+        #rev-logo-box {
+          width: 80px;
+          height: 80px;
+          border-radius: 20px;
+          background: linear-gradient(135deg, #2563eb, #06b6d4);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 0 60px rgba(37, 99, 235, 0.3);
+        }
+
+        #rev-logo-letter {
+          font-size: 40px;
+          font-weight: 800;
+          color: #fff;
+        }
+
+        #rev-brand {
+          font-size: 48px;
+          font-weight: 700;
+          color: #f1f5f9;
+          letter-spacing: -0.02em;
+        }
+
+        #rev-headline {
+          font-size: 44px;
+          font-weight: 600;
+          color: #e2e8f0;
+          text-align: center;
+          max-width: 1000px;
+          line-height: 1.4;
+          margin: 0;
+          z-index: 1;
+        }
+
+        #rev-hl-accent {
+          background: linear-gradient(135deg, #3b82f6, #06b6d4);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          font-weight: 700;
+        }
+
+        #rev-sub {
+          font-size: 22px;
+          color: #738196;
+          margin-top: 28px;
+          z-index: 1;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          font-weight: 500;
+        }
+
+        #rev-line {
+          width: 100px;
+          height: 3px;
+          background: linear-gradient(90deg, #2563eb, #06b6d4);
+          margin-top: 32px;
+          border-radius: 2px;
+          z-index: 1;
+        }
+
+        .rev-orb {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(80px);
+        }
+
+        #rev-orb-1 { width: 500px; height: 500px; background: rgba(37, 99, 235, 0.08); top: 15%; left: 25%; }
+        #rev-orb-2 { width: 350px; height: 350px; background: rgba(6, 182, 212, 0.06); bottom: 20%; right: 20%; }
+      </style>
+
+      <div id="root" data-composition-id="reveal" data-width="1920" data-height="1080" data-duration="7">
+        <div id="rev-orb-1" class="rev-orb"></div>
+        <div id="rev-orb-2" class="rev-orb"></div>
+
+        <div id="rev-logo-area">
+          <div id="rev-logo-box">
+            <span id="rev-logo-letter">T</span>
+          </div>
+          <span id="rev-brand">Teknosure</span>
+        </div>
+
+        <h2 id="rev-headline">
+          Transformez vos processus grace a <span id="rev-hl-accent">l'intelligence artificielle</span>
+        </h2>
+
+        <p id="rev-sub">IA &bull; Automatisation &bull; Performance</p>
+        <div id="rev-line"></div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(".rev-orb", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.5, ease: "power2.out", stagger: 0.3 }, 0);
+
+        tl.fromTo("#rev-logo-box", { scale: 0, rotation: -180 }, { scale: 1, rotation: 0, duration: 0.8, ease: "back.out(1.7)" }, 0.3);
+        tl.fromTo("#rev-logo-letter", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }, 0.8);
+        tl.fromTo("#rev-brand", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 0.9);
+
+        tl.fromTo("#rev-headline", { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.3);
+        tl.fromTo("#rev-sub", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.8);
+        tl.fromTo("#rev-line", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.inOut" }, 2.2);
+
+        tl.fromTo("#rev-logo-area", { opacity: 1 }, { opacity: 0, duration: 0.4, immediateRender: false }, 5.8);
+        tl.fromTo("#rev-headline", { opacity: 1 }, { opacity: 0, duration: 0.4, immediateRender: false }, 5.9);
+        tl.fromTo("#rev-sub", { opacity: 1 }, { opacity: 0, duration: 0.3, immediateRender: false }, 6.0);
+        tl.fromTo("#rev-line", { opacity: 1 }, { opacity: 0, duration: 0.3, immediateRender: false }, 6.1);
+
+        window.__timelines["reveal"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

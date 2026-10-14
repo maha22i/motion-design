@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: #0a0f1a;
+          overflow: hidden;
+          font-family: Inter, system-ui, sans-serif;
+        }
+
+        #wf-heading {
+          font-size: 36px;
+          font-weight: 600;
+          color: #94a3b8;
+          margin-bottom: 64px;
+          z-index: 1;
+        }
+
+        #wf-heading-em {
+          color: #f1f5f9;
+          font-weight: 700;
+        }
+
+        #wf-flow {
+          display: flex;
+          align-items: center;
+          gap: 0;
+          z-index: 1;
+        }
+
+        .wf-step {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
+          width: 200px;
+        }
+
+        .wf-step-circle {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 36px;
+        }
+
+        #wf-step-1 .wf-step-circle { background: rgba(37, 99, 235, 0.15); border: 2px solid rgba(37, 99, 235, 0.3); }
+        #wf-step-2 .wf-step-circle { background: rgba(6, 182, 212, 0.15); border: 2px solid rgba(6, 182, 212, 0.3); }
+        #wf-step-3 .wf-step-circle { background: rgba(34, 197, 94, 0.15); border: 2px solid rgba(34, 197, 94, 0.3); }
+        #wf-step-4 .wf-step-circle { background: rgba(168, 85, 247, 0.15); border: 2px solid rgba(168, 85, 247, 0.3); }
+
+        .wf-step-label {
+          font-size: 16px;
+          font-weight: 600;
+          color: #e2e8f0;
+          text-align: center;
+        }
+
+        .wf-step-desc {
+          font-size: 13px;
+          color: #64748b;
+          text-align: center;
+          line-height: 1.4;
+        }
+
+        .wf-arrow {
+          font-size: 28px;
+          color: #334155;
+          margin: 0 12px;
+          padding-bottom: 50px;
+        }
+
+        #wf-bottom-text {
+          font-size: 22px;
+          color: #94a3b8;
+          margin-top: 64px;
+          z-index: 1;
+        }
+
+        #wf-bottom-em {
+          color: #38bdf8;
+          font-weight: 600;
+        }
+      </style>
+
+      <div id="root" data-composition-id="workflow" data-width="1920" data-height="1080" data-duration="10">
+        <p id="wf-heading"><span id="wf-heading-em">Imaginez</span> : un processus entierement automatise</p>
+
+        <div id="wf-flow">
+          <div id="wf-step-1" class="wf-step">
+            <div class="wf-step-circle">&#128232;</div>
+            <span class="wf-step-label">Demande recue</span>
+            <span class="wf-step-desc">Email, formulaire ou API</span>
+          </div>
+
+          <span class="wf-arrow">&#8594;</span>
+
+          <div id="wf-step-2" class="wf-step">
+            <div class="wf-step-circle">&#129302;</div>
+            <span class="wf-step-label">Extraction IA</span>
+            <span class="wf-step-desc">Donnees cles identifiees</span>
+          </div>
+
+          <span class="wf-arrow">&#8594;</span>
+
+          <div id="wf-step-3" class="wf-step">
+            <div class="wf-step-circle">&#128640;</div>
+            <span class="wf-step-label">Routage auto</span>
+            <span class="wf-step-desc">Bon interlocuteur, bon outil</span>
+          </div>
+
+          <span class="wf-arrow">&#8594;</span>
+
+          <div id="wf-step-4" class="wf-step">
+            <div class="wf-step-circle">&#9989;</div>
+            <span class="wf-step-label">Mise a jour</span>
+            <span class="wf-step-desc">CRM, ERP, outils synchros</span>
+          </div>
+        </div>
+
+        <p id="wf-bottom-text">Vos equipes interviennent la ou <span id="wf-bottom-em">leur expertise fait la difference</span></p>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#wf-heading", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+
+        tl.fromTo("#wf-step-1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.2)" }, 0.8);
+        tl.fromTo("#wf-step-1 .wf-step-circle", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.9);
+
+        tl.fromTo(".wf-arrow", { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.5 }, 1.5);
+
+        tl.fromTo("#wf-step-2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.2)" }, 2.0);
+        tl.fromTo("#wf-step-2 .wf-step-circle", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 2.1);
+
+        tl.fromTo("#wf-step-3", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.2)" }, 3.2);
+        tl.fromTo("#wf-step-3 .wf-step-circle", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 3.3);
+
+        tl.fromTo("#wf-step-4", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.2)" }, 4.4);
+        tl.fromTo("#wf-step-4 .wf-step-circle", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 4.5);
+
+        tl.fromTo("#wf-bottom-text", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 5.5);
+
+        tl.fromTo("#wf-heading", { opacity: 1 }, { opacity: 0, duration: 0.4, immediateRender: false }, 9.0);
+        tl.fromTo("#wf-flow", { opacity: 1 }, { opacity: 0, duration: 0.4, immediateRender: false }, 9.0);
+        tl.fromTo("#wf-bottom-text", { opacity: 1 }, { opacity: 0, duration: 0.4, immediateRender: false }, 9.2);
+
+        window.__timelines["workflow"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

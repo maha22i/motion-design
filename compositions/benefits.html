@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(180deg, #0a0f1a 0%, #0d1525 100%);
+          overflow: hidden;
+          font-family: Inter, system-ui, sans-serif;
+        }
+
+        #ben-heading {
+          font-size: 44px;
+          font-weight: 700;
+          color: #f1f5f9;
+          margin: 0 0 56px 0;
+          letter-spacing: -0.02em;
+          z-index: 1;
+        }
+
+        #ben-hl {
+          color: #38bdf8;
+        }
+
+        #ben-metrics {
+          display: flex;
+          gap: 60px;
+          z-index: 1;
+        }
+
+        .ben-metric {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+          width: 240px;
+        }
+
+        .ben-metric-icon {
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 28px;
+          margin-bottom: 8px;
+        }
+
+        #ben-m-1 .ben-metric-icon { background: rgba(37, 99, 235, 0.15); border: 2px solid rgba(37, 99, 235, 0.3); }
+        #ben-m-2 .ben-metric-icon { background: rgba(34, 197, 94, 0.15); border: 2px solid rgba(34, 197, 94, 0.3); }
+        #ben-m-3 .ben-metric-icon { background: rgba(6, 182, 212, 0.15); border: 2px solid rgba(6, 182, 212, 0.3); }
+
+        .ben-metric-value {
+          font-size: 48px;
+          font-weight: 800;
+          letter-spacing: -0.03em;
+          margin: 0;
+        }
+
+        #ben-m-1 .ben-metric-value { color: #60a5fa; }
+        #ben-m-2 .ben-metric-value { color: #4ade80; }
+        #ben-m-3 .ben-metric-value { color: #22d3ee; }
+
+        .ben-metric-label {
+          font-size: 16px;
+          color: #8b95a5;
+          text-align: center;
+          line-height: 1.4;
+        }
+
+        #ben-accent-line {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.15), transparent);
+        }
+      </style>
+
+      <div id="root" data-composition-id="benefits" data-width="1920" data-height="1080" data-duration="8">
+        <div id="ben-accent-line"></div>
+
+        <h2 id="ben-heading"><span id="ben-hl">L'objectif ?</span> Des resultats mesurables</h2>
+
+        <div id="ben-metrics">
+          <div id="ben-m-1" class="ben-metric">
+            <div class="ben-metric-icon">&#9201;</div>
+            <p class="ben-metric-value">-70%</p>
+            <p class="ben-metric-label">Saisies manuelles eliminees</p>
+          </div>
+
+          <div id="ben-m-2" class="ben-metric">
+            <div class="ben-metric-icon">&#9889;</div>
+            <p class="ben-metric-value">x3</p>
+            <p class="ben-metric-label">Rapidite de traitement</p>
+          </div>
+
+          <div id="ben-m-3" class="ben-metric">
+            <div class="ben-metric-icon">&#128337;</div>
+            <p class="ben-metric-value">+40%</p>
+            <p class="ben-metric-label">Temps libere pour vos clients</p>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#ben-accent-line", { scaleX: 0 }, { scaleX: 1, duration: 1, ease: "power2.inOut" }, 0);
+        tl.fromTo("#ben-heading", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+
+        tl.fromTo("#ben-m-1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.8);
+        tl.fromTo("#ben-m-1 .ben-metric-icon", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.9);
+        tl.fromTo("#ben-m-1 .ben-metric-value", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 1.2);
+
+        tl.fromTo("#ben-m-2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 1.6);
+        tl.fromTo("#ben-m-2 .ben-metric-icon", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 1.7);
+        tl.fromTo("#ben-m-2 .ben-metric-value", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 2.0);
+
+        tl.fromTo("#ben-m-3", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 2.4);
+        tl.fromTo("#ben-m-3 .ben-metric-icon", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 2.5);
+        tl.fromTo("#ben-m-3 .ben-metric-value", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 2.8);
+
+        tl.fromTo("#ben-heading", { opacity: 1 }, { opacity: 0, duration: 0.4, immediateRender: false }, 7.0);
+        tl.fromTo("#ben-metrics", { opacity: 1 }, { opacity: 0, y: -15, duration: 0.4, immediateRender: false }, 7.1);
+
+        window.__timelines["benefits"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: #0a0f1a;
+          overflow: hidden;
+          font-family: Inter, system-ui, sans-serif;
+        }
+
+        #uc-grid-bg {
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
+          background-size: 60px 60px;
+        }
+
+        #uc-heading {
+          font-size: 40px;
+          font-weight: 700;
+          color: #f1f5f9;
+          margin-bottom: 56px;
+          letter-spacing: -0.02em;
+          z-index: 1;
+        }
+
+        #uc-cards {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 28px;
+          z-index: 1;
+        }
+
+        .uc-card {
+          width: 420px;
+          padding: 36px 32px;
+          background: rgba(15, 23, 42, 0.8);
+          border: 1px solid rgba(51, 65, 85, 0.4);
+          border-radius: 16px;
+          display: flex;
+          align-items: flex-start;
+          gap: 20px;
+        }
+
+        .uc-icon {
+          width: 52px;
+          height: 52px;
+          border-radius: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          flex-shrink: 0;
+        }
+
+        #uc-card-1 .uc-icon { background: rgba(37, 99, 235, 0.15); border: 1px solid rgba(37, 99, 235, 0.25); }
+        #uc-card-2 .uc-icon { background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(6, 182, 212, 0.25); }
+        #uc-card-3 .uc-icon { background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.25); }
+        #uc-card-4 .uc-icon { background: rgba(249, 115, 22, 0.15); border: 1px solid rgba(249, 115, 22, 0.25); }
+
+        .uc-card-content {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+
+        .uc-card-title {
+          font-size: 20px;
+          font-weight: 600;
+          color: #e2e8f0;
+          margin: 0;
+        }
+
+        .uc-card-desc {
+          font-size: 15px;
+          color: #8b95a5;
+          margin: 0;
+          line-height: 1.5;
+        }
+      </style>
+
+      <div id="root" data-composition-id="usecases" data-width="1920" data-height="1080" data-duration="8">
+        <div id="uc-grid-bg"></div>
+
+        <h2 id="uc-heading">Des cas concrets pour chaque metier</h2>
+
+        <div id="uc-cards">
+          <div id="uc-card-1" class="uc-card">
+            <div class="uc-icon">&#128196;</div>
+            <div class="uc-card-content">
+              <h3 class="uc-card-title">Traitement documentaire</h3>
+              <p class="uc-card-desc">Extraction, classement et archivage automatiques de vos documents</p>
+            </div>
+          </div>
+
+          <div id="uc-card-2" class="uc-card">
+            <div class="uc-icon">&#128200;</div>
+            <div class="uc-card-content">
+              <h3 class="uc-card-title">Suivi commercial</h3>
+              <p class="uc-card-desc">Pipeline, relances et reporting synchronises en temps reel</p>
+            </div>
+          </div>
+
+          <div id="uc-card-3" class="uc-card">
+            <div class="uc-icon">&#128172;</div>
+            <div class="uc-card-content">
+              <h3 class="uc-card-title">Support client</h3>
+              <p class="uc-card-desc">Tri, reponses automatiques et escalade intelligente des tickets</p>
+            </div>
+          </div>
+
+          <div id="uc-card-4" class="uc-card">
+            <div class="uc-icon">&#128202;</div>
+            <div class="uc-card-content">
+              <h3 class="uc-card-title">Reporting</h3>
+              <p class="uc-card-desc">Tableaux de bord generes et mis a jour automatiquement</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#uc-grid-bg", { opacity: 0 }, { opacity: 1, duration: 1, ease: "power2.out" }, 0);
+        tl.fromTo("#uc-heading", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+
+        tl.fromTo("#uc-card-1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 0.8);
+        tl.fromTo("#uc-card-2", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 1.2);
+        tl.fromTo("#uc-card-3", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 1.6);
+        tl.fromTo("#uc-card-4", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 2.0);
+
+        tl.fromTo("#uc-card-1", { borderColor: "rgba(51,65,85,0.4)" }, { borderColor: "rgba(37,99,235,0.4)", duration: 0.6, immediateRender: false }, 3.0);
+        tl.fromTo("#uc-card-2", { borderColor: "rgba(51,65,85,0.4)" }, { borderColor: "rgba(6,182,212,0.4)", duration: 0.6, immediateRender: false }, 3.3);
+        tl.fromTo("#uc-card-3", { borderColor: "rgba(51,65,85,0.4)" }, { borderColor: "rgba(34,197,94,0.4)", duration: 0.6, immediateRender: false }, 3.6);
+        tl.fromTo("#uc-card-4", { borderColor: "rgba(51,65,85,0.4)" }, { borderColor: "rgba(249,115,22,0.4)", duration: 0.6, immediateRender: false }, 3.9);
+
+        tl.fromTo("#uc-heading", { opacity: 1 }, { opacity: 0, duration: 0.4, immediateRender: false }, 7.0);
+        tl.fromTo("#uc-cards", { opacity: 1 }, { opacity: 0, y: -15, duration: 0.4, immediateRender: false }, 7.1);
+
+        window.__timelines["usecases"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
