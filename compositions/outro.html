@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: radial-gradient(ellipse at 50% 50%, #1a1a2e 0%, #09090b 70%);
+          overflow: hidden;
+          font-family: Inter, system-ui, sans-serif;
+        }
+
+        #outro-ring-outer {
+          position: absolute;
+          width: 500px;
+          height: 500px;
+          border: 2px solid rgba(99, 102, 241, 0.15);
+          border-radius: 50%;
+        }
+
+        #outro-ring-inner {
+          position: absolute;
+          width: 300px;
+          height: 300px;
+          border: 1px solid rgba(168, 85, 247, 0.1);
+          border-radius: 50%;
+        }
+
+        #outro-cta-heading {
+          font-size: 72px;
+          font-weight: 700;
+          letter-spacing: -0.04em;
+          color: #fafafa;
+          margin: 0;
+          z-index: 1;
+        }
+
+        #outro-cta-sub {
+          font-size: 24px;
+          color: #a1a1aa;
+          margin: 20px 0 48px 0;
+          z-index: 1;
+        }
+
+        #outro-btn {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 20px 48px;
+          background: linear-gradient(135deg, #6366f1, #8b5cf6);
+          border-radius: 16px;
+          font-size: 20px;
+          font-weight: 600;
+          color: #fff;
+          z-index: 1;
+          box-shadow: 0 0 60px rgba(99, 102, 241, 0.3);
+        }
+
+        #outro-btn-arrow {
+          font-size: 24px;
+        }
+
+        #outro-footer {
+          position: absolute;
+          bottom: 60px;
+          display: flex;
+          align-items: center;
+          gap: 40px;
+          z-index: 1;
+        }
+
+        .outro-footer-item {
+          font-size: 16px;
+          color: #8a8a92;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .outro-footer-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #6366f1;
+        }
+
+        #outro-sparkle-1,
+        #outro-sparkle-2,
+        #outro-sparkle-3,
+        #outro-sparkle-4 {
+          position: absolute;
+          width: 8px;
+          height: 8px;
+          background: #818cf8;
+          border-radius: 50%;
+        }
+
+        #outro-sparkle-1 { top: 25%; left: 25%; }
+        #outro-sparkle-2 { top: 20%; right: 30%; }
+        #outro-sparkle-3 { bottom: 30%; left: 20%; }
+        #outro-sparkle-4 { bottom: 25%; right: 25%; }
+      </style>
+
+      <div id="root" data-composition-id="outro" data-width="1920" data-height="1080" data-duration="7">
+        <div id="outro-ring-outer"></div>
+        <div id="outro-ring-inner"></div>
+
+        <div id="outro-sparkle-1"></div>
+        <div id="outro-sparkle-2"></div>
+        <div id="outro-sparkle-3"></div>
+        <div id="outro-sparkle-4"></div>
+
+        <h2 id="outro-cta-heading">Start Creating</h2>
+        <p id="outro-cta-sub">Your next video is one command away</p>
+
+        <div id="outro-btn">
+          <span>Get Started</span>
+          <span id="outro-btn-arrow">&rarr;</span>
+        </div>
+
+        <div id="outro-footer">
+          <div class="outro-footer-item">
+            <div class="outro-footer-dot"></div>
+            <span>hyperframes.heygen.com</span>
+          </div>
+          <div class="outro-footer-item">
+            <div class="outro-footer-dot"></div>
+            <span>Open Source</span>
+          </div>
+          <div class="outro-footer-item">
+            <div class="outro-footer-dot"></div>
+            <span>Apache 2.0</span>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#outro-ring-outer", { scale: 0, opacity: 0, rotation: -45 }, { scale: 1, opacity: 1, rotation: 0, duration: 1.2, ease: "power2.out" }, 0);
+        tl.fromTo("#outro-ring-inner", { scale: 0, opacity: 0, rotation: 45 }, { scale: 1, opacity: 1, rotation: 0, duration: 1, ease: "power2.out" }, 0.3);
+
+        tl.fromTo("#outro-sparkle-1", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 0.8);
+        tl.fromTo("#outro-sparkle-2", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 1.0);
+        tl.fromTo("#outro-sparkle-3", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 1.2);
+        tl.fromTo("#outro-sparkle-4", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 1.4);
+
+        tl.fromTo("#outro-sparkle-1", { y: 0 }, { y: -15, duration: 2, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.5);
+        tl.fromTo("#outro-sparkle-2", { y: 0 }, { y: 10, duration: 2.2, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.5);
+        tl.fromTo("#outro-sparkle-3", { y: 0 }, { y: -12, duration: 1.8, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.5);
+        tl.fromTo("#outro-sparkle-4", { y: 0 }, { y: 8, duration: 2.4, ease: "sine.inOut", repeat: 1, yoyo: true }, 1.5);
+
+        tl.fromTo("#outro-cta-heading", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.6);
+        tl.fromTo("#outro-cta-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.0);
+
+        tl.fromTo("#outro-btn", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 1.4);
+        tl.fromTo("#outro-btn", { boxShadow: "0 0 30px rgba(99,102,241,0.2)" }, { boxShadow: "0 0 80px rgba(99,102,241,0.4)", duration: 1, ease: "sine.inOut", repeat: 2, yoyo: true, immediateRender: false }, 2.0);
+
+        tl.fromTo("#outro-footer", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.8);
+
+        tl.fromTo("#outro-cta-heading", { opacity: 1 }, { opacity: 0, duration: 0.5, immediateRender: false }, 6.0);
+        tl.fromTo("#outro-cta-sub", { opacity: 1 }, { opacity: 0, duration: 0.5, immediateRender: false }, 6.0);
+        tl.fromTo("#outro-btn", { opacity: 1 }, { opacity: 0, duration: 0.5, immediateRender: false }, 6.1);
+        tl.fromTo("#outro-ring-outer", { opacity: 1 }, { opacity: 0, duration: 0.4, immediateRender: false }, 6.2);
+        tl.fromTo("#outro-ring-inner", { opacity: 1 }, { opacity: 0, duration: 0.4, immediateRender: false }, 6.2);
+        tl.fromTo("#outro-footer", { opacity: 1 }, { opacity: 0, duration: 0.3, immediateRender: false }, 6.3);
+
+        window.__timelines["outro"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

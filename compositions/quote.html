@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: #09090b;
+          overflow: hidden;
+          font-family: Inter, system-ui, sans-serif;
+        }
+
+        #quote-mark {
+          font-size: 200px;
+          color: rgba(93, 93, 99, 0.8);
+          font-weight: 800;
+          line-height: 1;
+          margin-bottom: -60px;
+          font-family: Georgia, serif;
+        }
+
+        #quote-text {
+          font-size: 44px;
+          font-weight: 500;
+          color: #e4e4e7;
+          max-width: 1100px;
+          text-align: center;
+          line-height: 1.5;
+          margin: 0;
+          letter-spacing: -0.01em;
+        }
+
+        #quote-text-highlight {
+          color: #a78bfa;
+          font-weight: 600;
+        }
+
+        #quote-author {
+          margin-top: 48px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+
+        #quote-avatar {
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #6366f1, #a855f7);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 22px;
+          font-weight: 700;
+          color: #fff;
+        }
+
+        #quote-author-info {
+          display: flex;
+          flex-direction: column;
+        }
+
+        #quote-author-name {
+          font-size: 20px;
+          font-weight: 600;
+          color: #fafafa;
+          margin: 0;
+        }
+
+        #quote-author-role {
+          font-size: 16px;
+          color: #787880;
+          margin: 4px 0 0 0;
+        }
+
+        #quote-line-left,
+        #quote-line-right {
+          position: absolute;
+          top: 50%;
+          width: 200px;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3));
+        }
+
+        #quote-line-left {
+          left: 80px;
+          background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3));
+        }
+
+        #quote-line-right {
+          right: 80px;
+          background: linear-gradient(270deg, transparent, rgba(99, 102, 241, 0.3));
+        }
+      </style>
+
+      <div id="root" data-composition-id="quote" data-width="1920" data-height="1080" data-duration="6">
+        <div id="quote-line-left"></div>
+        <div id="quote-line-right"></div>
+
+        <div id="quote-mark">&ldquo;</div>
+
+        <p id="quote-text">
+          Motion design should feel like <span id="quote-text-highlight">magic, not work</span>.
+          Write HTML, get a video. That simple.
+        </p>
+
+        <div id="quote-author">
+          <div id="quote-avatar">A</div>
+          <div id="quote-author-info">
+            <p id="quote-author-name">Alex Chen</p>
+            <p id="quote-author-role">Creative Director, Studio Labs</p>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#quote-line-left", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power2.inOut", transformOrigin: "right" }, 0);
+        tl.fromTo("#quote-line-right", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power2.inOut", transformOrigin: "left" }, 0);
+
+        tl.fromTo("#quote-mark", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, 0.2);
+
+        tl.fromTo("#quote-text", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 0.6);
+        tl.fromTo("#quote-text-highlight", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 1.2);
+
+        tl.fromTo("#quote-avatar", { opacity: 0, scale: 0, rotation: -90 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.5, ease: "back.out(1.7)" }, 1.8);
+        tl.fromTo("#quote-author-name", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 2.1);
+        tl.fromTo("#quote-author-role", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 2.3);
+
+        tl.fromTo("#quote-mark", { opacity: 1 }, { opacity: 0, duration: 0.4, immediateRender: false }, 5.0);
+        tl.fromTo("#quote-text", { opacity: 1 }, { opacity: 0, duration: 0.4, immediateRender: false }, 5.0);
+        tl.fromTo("#quote-author", { opacity: 1 }, { opacity: 0, duration: 0.4, immediateRender: false }, 5.2);
+
+        window.__timelines["quote"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

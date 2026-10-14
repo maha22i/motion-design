@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: radial-gradient(ellipse at 50% 40%, #1a1a2e 0%, #09090b 70%);
+          overflow: hidden;
+        }
+
+        .intro-orb {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(80px);
+        }
+
+        #intro-orb-1 {
+          width: 600px;
+          height: 600px;
+          background: rgba(99, 102, 241, 0.15);
+          top: 20%;
+          left: 30%;
+        }
+
+        #intro-orb-2 {
+          width: 400px;
+          height: 400px;
+          background: rgba(168, 85, 247, 0.12);
+          top: 40%;
+          right: 25%;
+        }
+
+        #intro-orb-3 {
+          width: 300px;
+          height: 300px;
+          background: rgba(59, 130, 246, 0.1);
+          bottom: 20%;
+          left: 45%;
+        }
+
+        #intro-logo-mark {
+          width: 120px;
+          height: 120px;
+          border-radius: 28px;
+          background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 48px;
+          box-shadow: 0 0 80px rgba(99, 102, 241, 0.3);
+        }
+
+        #intro-logo-icon {
+          font-size: 56px;
+          color: #fff;
+          font-weight: 700;
+          font-family: Inter, system-ui, sans-serif;
+        }
+
+        #intro-title {
+          font-size: 96px;
+          font-weight: 700;
+          letter-spacing: -0.04em;
+          line-height: 1.1;
+          text-align: center;
+          margin: 0;
+          font-family: Inter, system-ui, sans-serif;
+          color: #fafafa;
+        }
+
+        #intro-title-accent {
+          background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        #intro-subtitle {
+          font-size: 28px;
+          color: #a1a1aa;
+          margin-top: 24px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          font-weight: 500;
+          font-family: Inter, system-ui, sans-serif;
+        }
+
+        #intro-line {
+          width: 120px;
+          height: 3px;
+          background: linear-gradient(90deg, #6366f1, #a855f7);
+          margin-top: 40px;
+          border-radius: 2px;
+        }
+
+        .intro-particle {
+          position: absolute;
+          width: 4px;
+          height: 4px;
+          background: rgba(139, 92, 246, 0.6);
+          border-radius: 50%;
+        }
+
+        #intro-p1 { top: 15%; left: 20%; }
+        #intro-p2 { top: 25%; right: 15%; }
+        #intro-p3 { bottom: 30%; left: 10%; }
+        #intro-p4 { top: 10%; left: 55%; }
+        #intro-p5 { bottom: 20%; right: 20%; }
+        #intro-p6 { top: 50%; left: 8%; }
+      </style>
+
+      <div id="root" data-composition-id="intro" data-width="1920" data-height="1080" data-duration="7">
+        <div id="intro-orb-1" class="intro-orb"></div>
+        <div id="intro-orb-2" class="intro-orb"></div>
+        <div id="intro-orb-3" class="intro-orb"></div>
+
+        <div id="intro-p1" class="intro-particle"></div>
+        <div id="intro-p2" class="intro-particle"></div>
+        <div id="intro-p3" class="intro-particle"></div>
+        <div id="intro-p4" class="intro-particle"></div>
+        <div id="intro-p5" class="intro-particle"></div>
+        <div id="intro-p6" class="intro-particle"></div>
+
+        <div id="intro-logo-mark">
+          <span id="intro-logo-icon">M</span>
+        </div>
+
+        <h1 id="intro-title">
+          <span id="intro-title-accent">Motion</span> Design
+        </h1>
+
+        <p id="intro-subtitle">Create stunning videos from code</p>
+
+        <div id="intro-line"></div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(".intro-orb", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 2, ease: "power2.out", stagger: 0.2 }, 0);
+        tl.fromTo(".intro-particle", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.8, stagger: 0.1, ease: "back.out(2)" }, 0.3);
+        tl.fromTo(".intro-particle", { y: 0 }, { y: -20, duration: 3, ease: "sine.inOut", stagger: { each: 0.15, repeat: 1, yoyo: true } }, 0.5);
+
+        tl.fromTo("#intro-logo-mark", { scale: 0, rotation: -180 }, { scale: 1, rotation: 0, duration: 0.8, ease: "back.out(1.7)" }, 0.4);
+        tl.fromTo("#intro-logo-icon", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }, 1.0);
+
+        tl.fromTo("#intro-title", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 1.2);
+        tl.fromTo("#intro-subtitle", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.8);
+        tl.fromTo("#intro-line", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.inOut" }, 2.2);
+
+        tl.fromTo("#intro-title", { opacity: 1 }, { opacity: 0, duration: 0.5, immediateRender: false }, 5.8);
+        tl.fromTo("#intro-subtitle", { opacity: 1 }, { opacity: 0, duration: 0.5, immediateRender: false }, 5.8);
+        tl.fromTo("#intro-logo-mark", { opacity: 1 }, { opacity: 0, duration: 0.5, immediateRender: false }, 5.9);
+        tl.fromTo("#intro-line", { opacity: 1 }, { opacity: 0, duration: 0.4, immediateRender: false }, 6.0);
+
+        window.__timelines["intro"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
